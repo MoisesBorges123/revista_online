@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{ 
-    Home\Home
-
+    Home\Home,
+    Admin\Dashboard,
+    Admin\Instituicao\Instituicao,
 };
 
 
@@ -25,7 +26,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/painel', Dashboard::class)->name('dashboard');
+    Route::get('/instituicao', Instituicao::class)->name('instituicao');
 });
