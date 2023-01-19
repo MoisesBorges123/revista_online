@@ -953,7 +953,7 @@ section {
 .hero-fullscreen {
   width: 100%;
   min-height: 100vh;
-  background: url("../img/hero-fullscreen-bg.jpg") center center;
+  background: url("../img/services-6.jpg") center center;
   background-size: cover;
   position: relative;
   padding: 120px 0 60px;
@@ -1001,6 +1001,7 @@ section {
   color: var(--color-white);
   background: var(--color-primary);
   font-family: var(--font-secondary);
+  border:none;
 }
 
 .hero-fullscreen .btn-get-started:hover {
