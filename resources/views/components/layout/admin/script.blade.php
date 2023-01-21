@@ -11,3 +11,5 @@
   <!-- Template Main JS File -->
   <script src="admin/assets/js/main.js"></script>
   @livewireScripts
+  <script src="js/app.js"></script>
+  @stack('script')

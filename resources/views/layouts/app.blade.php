@@ -9,6 +9,7 @@
         <x-jet-banner />
             <main id="main" class="main">
                 {{ $slot }}
+                <!--<div class="modal-backdrop fade show"></div>-->
             </main>
        
 

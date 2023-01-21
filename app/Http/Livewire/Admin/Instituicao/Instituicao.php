@@ -3,10 +3,17 @@
 namespace App\Http\Livewire\Admin\Instituicao;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 
-class Instituicao extends Component
+use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
+
+class Instituicao extends Component 
 {
     public $window, $selectedID;
+    public $listeners =[
+        'changeInstituicaoPage'=>'setWindow'        
+               
+    ];
     public function mount()
     {
         $this->setWindow('index');
@@ -16,8 +23,10 @@ class Instituicao extends Component
         
         return view('livewire.admin.instituicao.instituicao')->layout('layouts.app');
     }
+   
    public function setWindow($text,$id = null)
     {
+        
         $this->window = $text;
         if($id)
         {

@@ -22,7 +22,7 @@
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#about">Entrar</a>
+      <a class="btn-getstarted scrollto" href="{{route('login')}}">Entrar</a>
 
     </div>
   </header><!-- End Header -->
