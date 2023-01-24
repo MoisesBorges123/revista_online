@@ -5,6 +5,7 @@ use App\Http\Livewire\{
     Home\Home,
     Admin\Dashboard,
     Admin\Instituicao\Instituicao,
+    Admin\Revista\Revista,
 };
 
 
@@ -28,4 +29,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/instituicao', Instituicao::class)->name('instituicao');
+    Route::get('/revista', Revista::class)->name('revista');
 });

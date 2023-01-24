@@ -2074,7 +2074,7 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 10000,
+  timer: 8000,
   timerProgressBar: true,
   Open: function Open(toast) {
     toast.addEventListener('mouseenter', (sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().stopTimer));
@@ -2084,6 +2084,9 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
 document.addEventListener('livewire:load', function () {
   Livewire.on('swal', function (message, type) {
     var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    console.log(message);
+    console.log(type);
+    console.log(id);
     sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
       icon: type == 'delete' ? 'question' : type,
       text: message,
