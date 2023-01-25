@@ -21,6 +21,7 @@ class Artigo extends Model
                         'link_externo',
                         'palavra_chave',
                         'numero',
+                        'inicio_publicacao',
                         'resumo_portugues',
                         'resumo_espanhol',
                         'resumo_ingles'
@@ -28,5 +29,9 @@ class Artigo extends Model
     public function revista()
     {
         return $this->belongsTo(Revista::class,'revista_id','id');
+    }
+    public function autores()
+    {
+        return $this->belongsToMany(Autores::class,'artigos__autores','artigo_id','autor_id');
     }
 }

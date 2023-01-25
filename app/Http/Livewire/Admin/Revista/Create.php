@@ -13,8 +13,8 @@ class Create extends Component
     public $instituicao_id, $titulo, $subtitulo, $issn, $inicio_publicacao, $periodicidade, $qualis, $capa, $visivel, $instituicao, $editor_responsavel;
     protected $rules = [
         'instituicao_id'=>'required',
-        'titulo'=>'required',
-        'issn'=>'required',
+        'titulo'=>'required|unique:revistas,titulo',
+        'issn'=>'required|unique:revistas,titulo',
         'inicio_publicacao'=>'required',        
         'editor_responsavel'=>'required',
         'qualis'=>'required',

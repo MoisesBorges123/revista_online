@@ -6,6 +6,7 @@ use App\Http\Livewire\{
     Admin\Dashboard,
     Admin\Instituicao\Instituicao,
     Admin\Revista\Revista,
+    Admin\Artigo\Artigo
 };
 
 
@@ -21,6 +22,7 @@ use App\Http\Livewire\{
 */
 
 Route::get('/', Home::class)->name('home');
+Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
 
 Route::middleware([
     'auth:sanctum',
@@ -30,4 +32,6 @@ Route::middleware([
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/instituicao', Instituicao::class)->name('instituicao');
     Route::get('/revista', Revista::class)->name('revista');
+    Route::get('/artigo', Artigo::class)->name('artigo');
+    Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
 });
