@@ -2132,6 +2132,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _admin_scripts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/scripts */ "./resources/js/admin/scripts.js");
+/* harmony import */ var _blog_scripts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blog/scripts */ "./resources/js/blog/scripts.js");
+/* harmony import */ var _blog_scripts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_blog_scripts__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /*
@@ -2141,6 +2144,26 @@ window.Alpine = Alpine;
 
 Alpine.start();
 */
+
+/***/ }),
+
+/***/ "./resources/js/blog/scripts.js":
+/*!**************************************!*\
+  !*** ./resources/js/blog/scripts.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+//import WOW from 'wowjs'
+/*
+window._ = require('lodash');
+//const WOW = require('wowjs');
+
+window.wow = new WOW.WOW({
+    live: false
+});
+
+window.wow.init();*/
 
 /***/ }),
 
@@ -33433,6 +33456,32 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/css/admin/styles.css":
+/*!****************************************!*\
+  !*** ./resources/css/admin/styles.css ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/blog/styles.css":
+/*!***************************************!*\
+  !*** ./resources/css/blog/styles.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -37752,7 +37801,9 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/app": 0
+/******/ 			"css/app": 0,
+/******/ 			"css/blog/styles": 0,
+/******/ 			"css/admin/styles": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -37802,8 +37853,10 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/blog/styles","css/admin/styles"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/blog/styles","css/admin/styles"], () => (__webpack_require__("./resources/css/admin/styles.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/blog/styles","css/admin/styles"], () => (__webpack_require__("./resources/css/blog/styles.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/blog/styles","css/admin/styles"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

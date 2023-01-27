@@ -29,7 +29,7 @@
                             <div>
                                 <label for="">Pré-Visualização:</label> 
                             </div>
-                                <img src="{{ $capa->temporaryUrl() }}" style='height:15rem; width:9rem;'>
+                                <img src="{{ $capa->temporaryUrl() }}" style="height:15rem; width:21rem; border-radius:2rem;">
 
                         </div>
                     </div>
@@ -79,11 +79,26 @@
               </select>              
               @error('periodicidade') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>      
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
               <label for="qualis" class="form-label">QUALIS</label>
               <input type="text" wire:model='qualis' class="form-control @error('qualis') is-invalid @enderror" id="qualis">
               @error('qualis') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>      
+            <div class="col-md-6 col-sm-12">
+              <label class='mb-2'>Áreas do Conhecimento</label>
+              @if(!empty($areasConhecimentos))
+                @foreach($areasConhecimentos as $areaConhecimento)
+                <div class="form-check">
+                  <input class="form-check-input" value="{{$areaConhecimento->id}}" type="checkbox" wire:key='{{$areaConhecimento->id}}' wire:model="areaConhecimento_selected">
+                  <label class="form-check-label" >
+                    {{$areaConhecimento->nome}}
+                  </label>
+                </div>
+                @endforeach
+              @endif
+              
+            </div>   
+               
                   
                  
            

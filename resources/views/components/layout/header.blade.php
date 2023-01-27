@@ -14,7 +14,7 @@
           <li><a class="nav-link scrollto" href="{{route('home')}}"><span>Home</span></a></li>
           <li><a class="nav-link scrollto" href="index.html#about">Sobre</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">Instituições</a></li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">Artigos / Revistas</a></li>
+          <li><a class="nav-link scrollto" href="{{route('revistas')}}#revistas">Revistas</a></li>
           <li><a class="nav-link scrollto" href="index.html#portfolio">Fale Conosco</a></li>
           
           

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Revista;
 
+use App\Models\AreaEstudo;
 use App\Models\Instituicao;
 use App\Models\Revista;
 use Livewire\Component;
@@ -11,20 +12,22 @@ use Illuminate\Support\Facades\File;
 class Edit extends Component
 {
     use WithFileUploads;
-    public $revista, $instituicao_id, $titulo, $subtitulo, $issn, $inicio_publicacao, $periodicidade, $qualis, $capa, $visivel, $instituicao, $editor_responsavel;
+    public $revista, $newcapa, $instituicao_id, $titulo, $subtitulo, $issn, $inicio_publicacao, $periodicidade, $qualis, $capa, $visivel=[], $instituicao, $editor_responsavel;
+    public $areasConhecimentos, $areaConhecimento_selected=[];
     protected $rules = [
         'instituicao_id'=>'required',
         'titulo'=>'required',
         'issn'=>'required',
         'inicio_publicacao'=>'required',        
         'editor_responsavel'=>'required',
-        'qualis'=>'required'
+        'qualis'=>'required',
+        'capa'=>'required'
     ];
     public function mount($id)
     {
         $this->revista = Revista::find($id);
         $this->instituicao = Instituicao::get();
-        $this->visivel = true;
+        $this->areasConhecimentos = AreaEstudo::get();        
         $this->instituicao_id = $this->revista->instituicoe_id;
         $this->titulo = $this->revista->titulo;
         $this->subtitulo = $this->revista->subtitulo;
@@ -33,10 +36,15 @@ class Edit extends Component
         $this->periodicidade = $this->revista->periodicidade;
         $this->qualis = $this->revista->qualis;
         $this->capa = $this->revista->capa;
-        $this->visivel = $this->revista->visivel;
+        array_push($this->visivel,$this->revista->visivel);
         $this->editor_responsavel = $this->revista->editor_responsavel;
-       
+        
+        if(!empty($this->revista->areas_conhecimentos)){
+            foreach($this->revista->areas_conhecimentos as $item){
+                array_push($this->areaConhecimento_selected,$item->id);
+            }
 
+        }
     }
     public function render()
     {
@@ -44,9 +52,9 @@ class Edit extends Component
     }
     public function update()
     {
+        $this->validate();
         try
         {
-            $this->validate();
             $this->revista->update([
                 'instituicoe_id'=>$this->instituicao_id,
                 'titulo'=>$this->titulo,
@@ -56,16 +64,27 @@ class Edit extends Component
                 'periodicidade'=>$this->periodicidade,
                 'editor_responsavel'=>$this->editor_responsavel,
                 'qualis'=>$this->qualis, 
-                'capa'=>'storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension(),               
-                'visivel'=>$this->visivel
+                'capa'=>empty($this->newcapa) ? $this->capa : 'storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->newcapa->extension(),
+                'visivel'=>empty($this->visivel) ? false : true
             ]);
-            if('storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension() != $this->revista->capa )
-            {
-                if(File::exists(public_path($this->revista->capa))){                    
-                    File::delete(public_path($this->revista->capa));        
+            if(!empty($newcapa)){
+                if('storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension() != $this->revista->capa )
+                {
+                    if(File::exists(public_path($this->revista->capa))){                    
+                        File::delete(public_path($this->revista->capa));        
+                    }
+                    $this->capa->storePubliclyAs('public\revistas\\','capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension());
+    
                 }
-                $this->capa->storePubliclyAs('public\revistas\\','capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension());
-
+            }
+            $this->revista->areas_conhecimentos()->detach();
+            if(count($this->areaConhecimento_selected)>0)
+            {
+                
+                foreach($this->areaConhecimento_selected as $id){
+                    
+                    $this->revista->areas_conhecimentos()->attach($id);
+                }
             }
             $this->emit('toast','Registro atualizado com sucesso!','success');            
             $this->reset();

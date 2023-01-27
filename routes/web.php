@@ -6,7 +6,10 @@ use App\Http\Livewire\{
     Admin\Dashboard,
     Admin\Instituicao\Instituicao,
     Admin\Revista\Revista,
-    Admin\Artigo\Artigo
+    Admin\Artigo\Artigo,
+    Admin\Configuracoes\AreaEstudo\AreaEstudo,
+    Blog\Revistas\Index as RevistaBlog,
+    Blog\Artigos\Artigo AS ArtigoBlog
 };
 
 
@@ -22,7 +25,8 @@ use App\Http\Livewire\{
 */
 
 Route::get('/', Home::class)->name('home');
-Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
+Route::get('/revistas', RevistaBlog::class)->name('revistas');
+Route::get('/artigos/{id}', ArtigoBlog::class)->name('artigos');
 
 Route::middleware([
     'auth:sanctum',
@@ -34,4 +38,5 @@ Route::middleware([
     Route::get('/revista', Revista::class)->name('revista');
     Route::get('/artigo', Artigo::class)->name('artigo');
     Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
+    Route::get('/areas-do-conhecimento', AreaEstudo::class)->name('areaestudo');
 });

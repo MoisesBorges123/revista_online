@@ -11,5 +11,5 @@ class ArtigoAutor extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'artigos__autores';
-    public $fillable =['artigo_id','autor_id']
+    public $fillable =['artigo_id','autor_id'];
 }

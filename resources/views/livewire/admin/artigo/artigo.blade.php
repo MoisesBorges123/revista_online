@@ -44,23 +44,3 @@
     <livewire:admin.artigo.delete></livewire:admin.artigo.delete>
 </div>
 
-@push('script')
-<script>
-   function telefone()
-        {
-           
-            var phone=$('.telefone');
-            let inp = new Inputmask('(99) 9 9999-9999',{
-                onBeforeMask: function (value, opts) {
-                    if(null === value){
-                        value= '*'
-                    }
-                    return value;
-                }
-            });
-            if(phone.val() != null){
-                inp.mask(phone);
-            }
-        }
-</script>
-@endpush

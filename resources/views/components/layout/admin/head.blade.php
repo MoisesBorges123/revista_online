@@ -25,6 +25,7 @@
 
 <!-- Template Main CSS File -->
 <link href="admin/assets/css/style.css" rel="stylesheet">
+<script src="css/admin/styles.css" rel="stylesheet"></script>
 @livewireStyles
 <!-- =======================================================
 * Template Name: NiceAdmin - v2.5.0

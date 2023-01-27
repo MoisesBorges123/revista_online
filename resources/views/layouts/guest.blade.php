@@ -8,14 +8,16 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top" data-scrollto-offset="0">
+  <header id="header" class="header fixed-top mb-5" data-scrollto-offset="0">
     <x-layout.header></x-layout.header>
   </header><!-- End Header -->
 
   
 
-  <main id="main">
-    {{$slot}}
+  <main id="main" class='mt-5'>
+    <div class="container-fluid mt-5">
+      {{$slot}}
+    </div>
   </main>
 
   <!-- ======= Footer ======= -->

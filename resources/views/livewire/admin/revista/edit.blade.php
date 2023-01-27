@@ -10,7 +10,7 @@
           <form wire:submit.prevent="update" class="row g-3">
             <div class="col-md-6 div-sm-12">
                 <label for="instituicao_id">Instituição</label>
-                <select  wire:model='instituicao_id' class="form-control">
+                <select  wire:model='instituicao_id' class="form-control mb-3">
                     <option value=""> - Selecione - </option>
                     @if(!empty($instituicao))
                         @foreach($instituicao as $item)  
@@ -18,25 +18,39 @@
                         @endforeach
                     @endif
                 </select>
+                <div class="form-check form-switch mt-5">
+                    <input class="form-check-input" value="1" type="checkbox" id="flexSwitchCheckChecked" wire:model='visivel'>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Visível</label>
+                  </div>
             </div>
             
             <div class="col-md-6 cpl-sm-12">
                 <div class="row">
-                    @if ($capa)
+                    @if ($newcapa)
                         <div class="col-md-12 col-sm-12 pl-5 pr-5 justfy-content-center text-center">
                             <div>
                                 <div>
                                     <label for="">Pré-Visualização:</label> 
                                 </div>
-                                    <img src="{{ $capa->temporaryUrl() }}" style='height:15rem; width:9rem;'>
+                                    <img src="{{ $newcapa->temporaryUrl() }}" class='img-preview-upload-revista' style="height:15rem; width:21rem; border-radius:2rem;">
 
                             </div>
                         </div>
+                    @else
+                    <div class="col-md-12 col-sm-12 pl-5 pr-5 justfy-content-center text-center">
+                        <div>
+                            <div>
+                                <label for="">Pré-Visualização:</label> 
+                            </div>
+                                <img src="{{ $capa ?? ''}}" class='img-preview-upload-revista' style="height:15rem; width:21rem; border-radius:2rem;">
+
+                        </div>
+                    </div>
                     @endif
                     <div class="col-12">
-                        <label for="capa" class="form-label">Capa</label>
-                        <input type="file" wire:model='capa' class="form-control @error('capa') is-invalid @enderror" id="capa">
-                        @error('capa') <span class="text-danger error">{{ $message }}</span> @enderror
+                        <label for="newcapa" class="form-label">Capa</label>
+                        <input type="file" wire:model='newcapa' class="form-control @error('newcapa') is-invalid @enderror" id="newcapa">
+                        @error('newcapa') <span class="text-danger error">{{ $message }}</span> @enderror
                         
                     </div>
 
@@ -45,7 +59,7 @@
             <div class="col-md-12">
               <label for="titulo" class="form-label">Título</label>
               <input type="text" wire:model="titulo" class="form-control @error('titulo') is-invalid @enderror" id="titulo">
-              @error('titulo') <span class="text-danger error">{{ $message }}</span> @enderror
+              @error('titulo') <span class="text-danger error">{{ $message }}</span> @enderror              
             </div>
             <div class="col-md-12">
               <label for="subtitulo" class="form-label">Subtítulo</label>
@@ -85,13 +99,22 @@
               <label for="qualis" class="form-label">QUALIS</label>
               <input type="text" wire:model='qualis' class="form-control @error('qualis') is-invalid @enderror" id="qualis">
               @error('qualis') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>      
-            <div class="col-md-6">
-              <label for="capa" class="form-label">Capa</label>
-              <input type="file" wire:model='capa' class="form-control @error('capa') is-invalid @enderror" id="capa">
-              @error('capa') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>      
-                 
+            </div>                      
+            <div class="col-md-6 col-sm-12">
+                <label class='mb-2'>Áreas do Conhecimento</label>
+                @if(!empty($areasConhecimentos))
+                  @foreach($areasConhecimentos as $areaConhecimento)
+                  <div class="form-check"> 
+                    
+                    <input class="form-check-input" wire:model="areaConhecimento_selected"  value="{{$areaConhecimento->id}}" type="checkbox" wire:key='{{$areaConhecimento->id}}' >                    
+                    <label class="form-check-label" >
+                      {{$areaConhecimento->nome}}
+                    </label>
+                  </div>
+                  @endforeach
+                @endif
+                
+              </div>    
            
             
             <div class="text-center">

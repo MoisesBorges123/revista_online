@@ -1,0 +1,9 @@
+.input-search{
+    border-color: var(--color-primary) !important;
+
+}
+.btn-none{
+    border:none;
+    background:none;
+}
+
