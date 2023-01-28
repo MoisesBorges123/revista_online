@@ -21,7 +21,7 @@
         <div class="row gy-5">
           @foreach($revistas as $revista) 
           
-            <livewire:blog.revistas.card 
+            <livewire:blog.revistas.card wire:key="{{$revista->id}}"
             img='{{$revista->capa}}' 
             titulo='{{$revista->titulo}}' 
             subtitulo='{{$revista->subtitulo}}'  

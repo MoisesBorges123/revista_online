@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function navbarlinksActive() {
     navbarlinks.forEach(navbarlink => {
-      
-      if (!navbarlink.dataset.link) return;
+      //console.log(navbarlink.dataset.link);
+      if (!navbarlink.hash) return;
 
-      let section = document.querySelector(navbarlink.dataset.link);
+      let section = document.querySelector(navbarlink.hash);
       if (!section) return;
       
       let position = window.scrollY;
-      if (navbarlink.dataset.link != '#header') position += 200;
+      if (navbarlink.hash != '#header') position += 200;
 
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
         navbarlink.classList.add('active');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   let selectScrollto = document.querySelectorAll('.scrollto');
   selectScrollto.forEach(el => el.addEventListener('click', function(event) {
-    if (document.querySelector(this.dataset.link)) {
+    if (document.querySelector(this.hash)) {
       event.preventDefault();
 
       let mobileNavActive = document.querySelector('.mobile-nav-active');
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navbarToggle.classList.toggle('bi-list');
         navbarToggle.classList.toggle('bi-x');
       }
-      scrollto(this.dataset.link);
+      scrollto(this.hash);
     }
   }));
 

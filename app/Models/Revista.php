@@ -32,4 +32,8 @@ class Revista extends Model
     {
         return $this->belongsToMany(AreaEstudo::class,'revistas__areas_de_estudos','revista_id','areas_de_estudo_id');
     }
+    public function artigos()
+    {
+        return $this->hasMany(Artigo::class,'revista_id','id');
+    }
 }

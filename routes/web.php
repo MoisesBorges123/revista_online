@@ -26,7 +26,7 @@ use App\Http\Livewire\{
 
 Route::get('/', Home::class)->name('home');
 Route::get('/revistas', RevistaBlog::class)->name('revistas');
-Route::get('/artigos/{id}', ArtigoBlog::class)->name('artigos');
+Route::get('/artigos/{id?}', ArtigoBlog::class)->name('artigos');
 
 Route::middleware([
     'auth:sanctum',

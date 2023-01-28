@@ -9,10 +9,11 @@ use Livewire\Component;
 class Artigo extends Component
 {
     public $revista, $search, $artigos;
-    public function mount($id)
+    public function mount($id=null)
     {
-        $this->revista = Revista::find($id);      
-        $artigos = $this->getLast();  
+        $this->revista = Revista::find($id);                  
+        $this->artigos = $this->getLast();      
+       
     }
     public function render()
     {
@@ -20,6 +21,7 @@ class Artigo extends Component
     }
     public function updatedSearch(){
         $this->search();
+        //dd($this->artigos);
     }
     public function search(){
         if(!empty($this->search)){
@@ -36,13 +38,23 @@ class Artigo extends Component
         }else{
             $this->getLast();
         }
+        
     }
     private function getLast()
     {
-        $take = 10;
-        $total = count(Revista::get());        
-        $skip = $total-$take;
-        $this->artigos = ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))        
-        ->take($take)->skip($skip)->get();
+        if(!empty($this->revista) && count($this->revista->toArray())==0)
+        {
+            $total = count(ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))->get());        
+            $take = $total==0 ? 0 : 50;
+            $skip = $total-$take;
+            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))        
+            ->take($take)->skip($skip)->get();
+        }else
+        {
+           
+            return $this->revista->artigos;
+           
+        }
+        
     }
 }
