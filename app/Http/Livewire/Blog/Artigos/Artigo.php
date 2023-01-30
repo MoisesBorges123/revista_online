@@ -42,17 +42,24 @@ class Artigo extends Component
     }
     private function getLast()
     {
-        if(!empty($this->revista) && count($this->revista->toArray())==0)
+        //dd(($this->revista->artigos->toArray()));
+        if(!empty($this->revista->id) )
+        {
+            $total = count(ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))->where('revista_id',$this->revista->id)->get());        
+            $take = $total==0 ? 0 : 50;
+            $skip = $total-$take;
+            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))       
+            ->take($take)->skip($skip)->get();
+            return $this->revista->artigos->where('inicio_publicacao','<=',date('Y-m-d',time()))->get();           
+        }else
         {
             $total = count(ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))->get());        
             $take = $total==0 ? 0 : 50;
             $skip = $total-$take;
-            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))        
+            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))       
             ->take($take)->skip($skip)->get();
-        }else
-        {
            
-            return $this->revista->artigos;
+        
            
         }
         

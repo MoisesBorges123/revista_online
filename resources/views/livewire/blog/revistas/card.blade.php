@@ -7,7 +7,7 @@
         <div class="icon">
           {!! empty(!$icone) ? html_entity_decode($icone) : '<i class="bi bi-chat-square-text"></i>' !!}
         </div>
-        <a href="{{route('artigos',['id'=>$cod])}}#artigos" class="stretched-link">
+        <a href="{{route('artigos',['id'=>$cod])}}" class="stretched-link">
           <h3>{{$titulo}}</h3>
         </a>
         <p>{{$subtitulo}}</p>
