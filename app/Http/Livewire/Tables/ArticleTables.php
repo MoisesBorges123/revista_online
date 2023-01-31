@@ -51,6 +51,7 @@ class ArticleTables extends DataTableComponent
             'deleteSelected' => 'Apagar',
             'exportSelected' => 'Exportar',
             'showSelected' =>   'Detalhes',
+            
         ];
     }
     public function columns(): array

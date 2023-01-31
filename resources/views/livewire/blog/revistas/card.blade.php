@@ -1,7 +1,7 @@
 <div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="300">
     <div class="service-item">
       <div class="img">
-        <img src="{{$img}}" class="img-fluid" alt="">
+        <img src="{{asset($img)}}" class="img-fluid" alt="">
       </div>
       <div class="details position-relative">
         <div class="icon">

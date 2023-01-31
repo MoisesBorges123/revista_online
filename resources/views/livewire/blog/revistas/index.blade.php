@@ -8,6 +8,17 @@
         <button wire:click="search" class="btn-none btn-watch-video d-flex align-items-center"><i class="bi bi-search"></i><span>Pesquisar</span></button>
         <!--<button  class="btn-none glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-search"></i><span>Pesquisar</span></button>-->
       </div> 
+      @if(!empty($instituicao->id))
+      <div class="d-flex" style='width:60%'>
+        <div class='badge badge-secondary'>
+          <span>{{$instituicao->nome_fantasia}}</span>
+          <span>
+            <i class="bi bi-x text-danger" wire:click="unsetinstituicao"></i>
+          </span>
+
+        </div>
+      </div>
+      @endif
     </div>
   </section>
   <section  class="services " >

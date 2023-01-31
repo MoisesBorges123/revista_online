@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-12">
               <label for="site" class="form-label">Site</label>
-              <input type="url" wire:model="site" class="form-control @error('site') is-invalid @enderror" id="site">
+              <input type="url" maxlength="43" wire:model="site" class="form-control @error('site') is-invalid @enderror" id="site">
               @error('site') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>
             <div class="col-md-6">

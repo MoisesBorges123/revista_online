@@ -9,7 +9,8 @@ use App\Http\Livewire\{
     Admin\Artigo\Artigo,
     Admin\Configuracoes\AreaEstudo\AreaEstudo,
     Blog\Revistas\Index as RevistaBlog,
-    Blog\Artigos\Artigo AS ArtigoBlog
+    Blog\Artigos\Artigo AS ArtigoBlog,
+    Blog\Instituicoes\Instituicao as InstituicaoBlog
 };
 
 
@@ -25,7 +26,8 @@ use App\Http\Livewire\{
 */
 
 Route::get('/', Home::class)->name('home');
-Route::get('/revistas', RevistaBlog::class)->name('revistas');
+Route::get('/revistas/{id?}', RevistaBlog::class)->name('revistas');
+Route::get('/instituções', InstituicaoBlog::class)->name('instituicoes');
 Route::get('/artigos/{id?}', ArtigoBlog::class)->name('artigos');
 
 Route::middleware([

@@ -16,7 +16,7 @@ class Create extends Component
         return [
             'nome'=>['required','min:5'],
             'cnpj'=>['required','unique:instituicoes,cnpj', new CnpjValidation()],
-            'site'=>['min:5'],
+            'site'=>['min:5','max:43'],
             'email'=>['required'],
             'senha'=>['required','min:8']
         ];

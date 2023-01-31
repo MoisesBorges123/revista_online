@@ -30,4 +30,8 @@ class Instituicao extends Model
     {
         return $this->belongsTo(Endereco::class,'endereco_id','id');
     }
+    public function revistas()
+    {
+        return $this->hasMany(Revista::class,'instituicoe_id','id');
+    }
 }

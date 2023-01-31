@@ -10,6 +10,7 @@
               {!! $numero !!}
               {!! $doi !!}
               {!! $datapublicacao !!}
+              {!! $autor[0]->name ?? '' !!}              
               
           </div>
       </button>

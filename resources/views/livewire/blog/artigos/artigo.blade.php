@@ -18,20 +18,29 @@
         <div class="container aos-init aos-animate"  data-aos="zoom-out" data-aos-delay="200">    
             
             @if(!empty($artigos) && count($artigos) > 0)
-                @foreach($artigos as $artigo)      
-                    <livewire:blog.artigos.card wire:key="{{$artigo->id}}"
-                    :titulo="$artigo->titulo"
-                    :volume="$artigo->volume"
-                    :numero="$artigo->numero"
-                    :doi="$artigo->doi"
-                    :datapublicacao="$artigo->inicio_publicacao"
-                    :resumoportugues="$artigo->resumo_portugues"
-                    :resumoingles="$artigo->resumo_ingles"
-                    :resumoespanhol="$artigo->resumo_espanhol"
-                    :ano="$artigo->ano" 
-                    :icone="$revista->areas_conhecimento ?? []"
-                    ></livewire:blog.artigos.card>
-                @endforeach
+                <div class="accordion accordion-flush px-xl-5" id="faqlist">
+                    @foreach($artigos as $artigo)                                            
+                        <livewire:blog.artigos.card wire:key="{{$artigo->id}}"
+                        :revista="$artigo->revista->titulo"
+                        :titulo="$artigo->titulo"
+                        :volume="$artigo->volume"
+                        :numero="$artigo->numero"
+                        :doi="$artigo->doi"
+                        :datapublicacao="$artigo->inicio_publicacao"
+                        :resumoportugues="$artigo->resumo_portugues"
+                        :resumoingles="$artigo->resumo_ingles"
+                        :resumoespanhol="$artigo->resumo_espanhol"
+                        :cod="$artigo->id"
+                        :ano="$artigo->ano" 
+                        :icone="$revista->areas_conhecimento ?? []"                    
+                        :resumeportugues="$artigo->resumo_portugues"
+                        :resumespanhol="$artigo->resumo_espanhol"                     
+                        :resumeingles="$artigo->resumo_ingles"
+                        :linkexterno="$artigo->link_externo" 
+                        :autorcorrespondente="$artigo->autores"                     
+                        ></livewire:blog.artigos.card>
+                    @endforeach
+                </div>
             @else
                 <h4>Essa Revista não possui artigos publicados.</h4>
             @endif
