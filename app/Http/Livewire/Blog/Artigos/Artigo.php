@@ -8,9 +8,10 @@ use Livewire\Component;
 
 class Artigo extends Component
 {
-    public $revista, $search, $artigos;
+    public $revista, $search, $artigos, $revista_id;
     public function mount($id=null)
     {
+        $this->revista_id = $id;
         $this->revista = Revista::find($id);                  
         $this->artigos = $this->getLast();      
        
@@ -43,12 +44,13 @@ class Artigo extends Component
     private function getLast()
     {
         //dd(($this->revista->artigos->toArray()));
-        if(!empty($this->revista->id) )
+        if(!empty($this->revista_id) )
         {
             $total = count(ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))->where('revista_id',$this->revista->id)->get());        
             $take = $total==0 ? 0 : 50;
             $skip = $total-$take;
-            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))       
+            return ModelsArtigo::where('inicio_publicacao','<=',date('Y-m-d',time()))  
+            ->where('revista_id',$this->revista->id)     
             ->take($take)->skip($skip)->get();
             return $this->revista->artigos->where('inicio_publicacao','<=',date('Y-m-d',time()))->get();           
         }else

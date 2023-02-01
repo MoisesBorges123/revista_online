@@ -47,4 +47,26 @@
 .footer-info .logo{
     width: 10rem
 }
+.img-carosel{
+    border-radius:1rem;
+}
+/*05.598.350/0001-15*/
+.filters{
+    border:solid 0.05rem;
+    padding:2rem;
+    border-color: var(--color-primary);
+    border-radius:1rem;
+}
+#filters{
+    padding-top: 0rem;
+}
+#filters p{
+    cursor:pointer;
+    color:var(--color-primary);
+}
+#revistas{
+    padding-bottom: 0rem;
+}
+.text-primary{
 
+}

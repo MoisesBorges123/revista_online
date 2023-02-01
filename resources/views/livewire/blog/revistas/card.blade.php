@@ -1,4 +1,4 @@
-<div class="col-xl-4 col-md-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="300">
+<div class="col-xl-4 col-md-6 aos-init aos-animate filter-area-conhecimento" data-areaconhecimento='{{$areaID}}'  data-aos="zoom-in" data-aos-delay="300">
     <div class="service-item">
       <div class="img">
         <img src="{{asset($img)}}" class="img-fluid" alt="">

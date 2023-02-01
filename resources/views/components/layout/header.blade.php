@@ -15,8 +15,7 @@
           <li><a class="nav-link scrollto" data-link="#instituicoes" href="{{route('instituicoes')}}">Instituições</a></li>
           <li><a class="nav-link scrollto" data-link="#artigos" href="{{route('artigos')}}">Artigos</a></li>
           <li><a class="nav-link scrollto" data-link="#revistas" href="{{route('revistas')}}">Revistas</a></li>
-          <li><a class="nav-link scrollto" data-link="#faleconosco" href="index.html#portfolio">Fale Conosco</a></li>
-          
+         
           
         </ul>
         <i class="bi bi-list mobile-nav-toggle d-none"></i>

@@ -718,7 +718,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 140px 0 60px 0;
+  /*padding: 140px 0 60px 0;*/
+  padding: 5rem 0 4rem 0;
 }
 
 .hero .carousel-item {

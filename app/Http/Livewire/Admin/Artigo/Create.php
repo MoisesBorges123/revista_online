@@ -18,7 +18,7 @@ class Create extends Component
                         'revista_id'=>'required',
                         'ano'=>'required',
                         'volume'=>'required',
-                        'doi'=>'required|unique:artigos,doi',                        
+                        'doi'=>'unique:artigos,doi',                        
                         'link_externo'=>'required',
                         'palavra_chave'=>'required',
                         'numero'=>'required',

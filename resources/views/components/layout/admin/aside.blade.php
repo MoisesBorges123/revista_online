@@ -31,20 +31,21 @@
           <span>Artigos</span>
         </a>
       </li><!-- End Contact Page Nav -->
-
+<!--
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
+        <a class="nav-link collapsed" href="{{route('banner')}}">
           <i class="bi bi-card-list"></i>
           <span>Mural</span>
         </a>
-      </li><!-- End Register Page Nav -->
-
+      </li>
+    --><!-- End Register Page Nav -->
+<!--
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-login.html">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Posts</span>
         </a>
-      </li><!-- End Login Page Nav -->
+      </li>End Login Page Nav -->
 
       
       <li class="nav-item">

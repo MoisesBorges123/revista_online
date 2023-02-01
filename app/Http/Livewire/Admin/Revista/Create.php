@@ -20,7 +20,7 @@ class Create extends Component
         'inicio_publicacao'=>'required',        
         'editor_responsavel'=>'required',
         'qualis'=>'required',
-        'capa' => 'required|image|max:1024'
+        'capa' => 'required|image|max:5120'
     ];
     public function mount()
     {

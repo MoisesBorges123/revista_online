@@ -67,15 +67,14 @@ class Edit extends Component
                 'capa'=>empty($this->newcapa) ? $this->capa : 'storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->newcapa->extension(),
                 'visivel'=>empty($this->visivel) ? false : true
             ]);
-            if(!empty($newcapa)){
-                if('storage\revistas\capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension() != $this->revista->capa )
-                {
+            if(!empty($this->newcapa)){
+               
                     if(File::exists(public_path($this->revista->capa))){                    
                         File::delete(public_path($this->revista->capa));        
                     }
-                    $this->capa->storePubliclyAs('public\revistas\\','capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->capa->extension());
+                    $this->newcapa->storePubliclyAs('public\revistas\\','capa_'.str_replace(' ','_',$this->titulo).'_'.str_replace(' ','_',$this->issn).'.'.$this->newcapa->extension());
     
-                }
+               
             }
             $this->revista->areas_conhecimentos()->detach();
             if(count($this->areaConhecimento_selected)>0)

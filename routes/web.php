@@ -8,11 +8,13 @@ use App\Http\Livewire\{
     Admin\Revista\Revista,
     Admin\Artigo\Artigo,
     Admin\Configuracoes\AreaEstudo\AreaEstudo,
+    Admin\Mural\Mural,
     Blog\Revistas\Index as RevistaBlog,
     Blog\Artigos\Artigo AS ArtigoBlog,
     Blog\Instituicoes\Instituicao as InstituicaoBlog
-};
 
+};
+use App\Http\Livewire\Admin\Mural\Mural as MuralMural;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +36,12 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
+])->group(function () {    
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/instituicao', Instituicao::class)->name('instituicao');
     Route::get('/revista', Revista::class)->name('revista');
     Route::get('/artigo', Artigo::class)->name('artigo');
     Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
     Route::get('/areas-do-conhecimento', AreaEstudo::class)->name('areaestudo');
+    Route::get('/banner',Mural::class)->name('banner');
 });
