@@ -10,6 +10,7 @@ class Home extends Component
     public $revistas;
     public function mount()
     {
+       
        $this->getDados();
         
     }

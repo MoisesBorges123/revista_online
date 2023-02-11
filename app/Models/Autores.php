@@ -11,7 +11,7 @@ class Autores extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'autores';
-    public $fillable = ['name','autor_correspondete','email','artigo_id'];
+    public $fillable = ['name','autor_correspondente','email','artigo_id'];
     public function articles()
     {
         return $this->belongsToMany(Artigo::class,'artigos__autores','autor_id','artigo_id');

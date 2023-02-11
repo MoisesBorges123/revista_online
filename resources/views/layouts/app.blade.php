@@ -4,6 +4,7 @@
         <x-layout.admin.head :title="$title ?? ''"></x-layout.admin.head>        
     </head>
     <body class="font-sans antialiased">
+       
         <x-layout.admin.header></x-layout.admin.header> 
         <x-layout.admin.aside></x-layout.admin.aside> 
         <x-jet-banner />

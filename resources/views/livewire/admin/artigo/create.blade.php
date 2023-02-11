@@ -38,17 +38,7 @@
               <label for="volume" class="form-label">Numero Artigo</label>
               <input type="text" wire:model="numero" class="form-control @error('numero') is-invalid @enderror" id="numero">
               @error('numero') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <label for="autor_correspondente" class="form-label">Autor Correspondente</label>
-              <input type="text" wire:model="autor_correspondente" class="form-control @error('autor_correspondente') is-invalid @enderror" id="autor_correspondente">
-              @error('autor_correspondente') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <label for="email_autor_correspondente" class="form-label">E-mail</label>
-              <input type="text" wire:model="email_autor_correspondente" class="form-control @error('email_autor_correspondente') is-invalid @enderror" id="email_autor_correspondente">
-              @error('email_autor_correspondente') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>
+            </div>            
             <div class="col-md-12">
               <label for="doi" class="form-label">DOI</label>
               <input type="text" wire:model="doi" class="form-control @error('doi') is-invalid @enderror" id="doi">
@@ -85,7 +75,7 @@
               @error('inicio_publicacao') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>            
             <div class="text-center">
-              <button type="submit" class="btn btn-large-1 btn-primary">Salvar</button>              
+              <button type="submit"  class="btn btn-large-1 btn-primary">Avançar</button>              
             </div>
           </form><!-- End Multi Columns Form -->
 

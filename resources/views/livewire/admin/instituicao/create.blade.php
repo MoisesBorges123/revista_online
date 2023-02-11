@@ -28,18 +28,20 @@
               <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror" id="mail">
               @error('email') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>
+            <div class="col-md-4">
+              <label for="telefone" class="form-label">Telefone</label>
+              <input type="text"  wire:model='telefone' onfocus="telefone()" class="telefone form-control @error('telefone') is-invalid @enderror" id="telefone">
+              @error('telefone') <span class="text-danger error">{{ $message }}</span> @enderror
+            </div>
+            <!--
             <div class="col-md-6">
               <label for="senha" class="form-label">Senha</label>
               <input type="password" wire:model='senha' class="form-control @error('senha') is-invalid @enderror" id="senha">
               @error('senha') <span class="text-danger error">{{ $message }}</span> @enderror
-            </div>      
+            </div>      -->
             <div class="col-12">
                 <div class="row">
-                    <div class="col-md-4">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="text"  wire:model='telefone' onfocus="telefone()" class="telefone form-control @error('telefone') is-invalid @enderror" id="telefone">
-                        @error('telefone') <span class="text-danger error">{{ $message }}</span> @enderror
-                      </div>
+                    
                     <div class="col-md-4 col-sm-12">
                         <label for="cep" class="form-label">Cep</label>
                         <div class="input-group">

@@ -2084,6 +2084,13 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().mixin({
 document.addEventListener('livewire:load', function () {
   Livewire.on('swal', function (message, type) {
     var id = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var acTrigger = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    /**
+     * message = Mensagem a ser exibieda para o usuário
+     * type = Tipo do message
+     * id = Se form um aviso de excusão esse é o ID a ser excuido
+     * acTrigger = Caso a mensagem a ser exibida precise chamar um função no livewire especifica execute
+     */
     console.log(message);
     console.log(type);
     console.log(id);
@@ -2093,7 +2100,15 @@ document.addEventListener('livewire:load', function () {
       showCancelButton: true
     }).then(function (result) {
       if (result.isConfirmed) {
-        if (type == 'delete') livewire.emit('delete', id);else if (type == 'question') livewire.emit('confirm');
+        if (type == 'delete') {
+          if (acTrigger) {
+            console.log('Entrou: ' + acTrigger);
+            livewire.emit(acTrigger, id);
+          } else {
+            console.log('NÃO Entrou: ' + acTrigger);
+            livewire.emit('delete', id);
+          }
+        } else if (type == 'question') livewire.emit('confirm');
       }
     });
   });

@@ -8,6 +8,7 @@
 
           <!-- Multi Columns Form -->
           <form wire:submit.prevent="store" class="row g-3">
+            @if((count($this->instituicao) > 1))
             <div class="col-md-6 div-sm-12">
                 <label for="institicao_id">Instituição</label>
                 <select name="instituicao_id" id="instituicao_id" wire:model='instituicao_id' class="form-control mt-1">
@@ -19,6 +20,7 @@
                     @endif
                 </select>
             </div>
+            @endif
             <div class="col-md-6">
                 <div class="row">
 
@@ -71,8 +73,8 @@
                 <option value=""> - Selecione - </option>
                 <option value="Diário">Diário</option>
                 <option value="Semanal">Semanal</option>
-                <option value="Mensal">Mensal</option>
                 <option value="Quinzenal">Quinzenal</option>
+                <option value="Mensal">Mensal</option>
                 <option value="Trienal">Trienal</option>
                 <option value="Semestral">Semestral</option>
                 <option value="Anual">Anual</option>

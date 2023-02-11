@@ -27,6 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'perfi_id',
+        'change_password'
     ];
 
     /**
@@ -58,4 +60,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function perfil(){
+        return $this->belongsTo(Perfi::class,'perfi_id','id');
+    }
+    public function instituicoes()
+    {
+        return $this->belongsToMany(Instituicao::class,'users__instituicoes','user_id','instituicoe_id');
+    }
+
 }

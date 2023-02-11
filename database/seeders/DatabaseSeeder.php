@@ -16,8 +16,15 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             EnderecoSeeder::class,
-            InstituicaoSeeder::class
-
+            InstituicaoSeeder::class,
+            PerfilsSeeder::class,
+            AreaDeEstudosSeeder::class
         ]);
     }
 }
+
+//alfaunipac@alafaunipac.com.br
+//10672013000160
+
+//zedytovidu@mailinator.com
+//44363703000150

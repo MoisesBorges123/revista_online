@@ -25,7 +25,22 @@ class Create extends Component
     public function mount()
     {
         $this->areasConhecimentos = AreaEstudo::get();
-        $this->instituicao = Instituicao::get();
+        if(auth()->user()->perfi_id == 3)
+        {
+            $instituicoes = [];
+            foreach(auth()->user()->instituicoes as $instituicao)
+            {
+                array_push($instituicoes,$instituicao->cnpj);
+            }            
+            $this->instituicao = Instituicao::whereIn('cnpj',$instituicoes)->get();
+        }else
+        {
+            $this->instituicao = Instituicao::get();
+        }
+        if(count($this->instituicao) == 1)
+        {
+            $this->instituicao_id = $this->instituicao[0]->id;
+        }
         $this->visivel = true;
     }
     public function render()

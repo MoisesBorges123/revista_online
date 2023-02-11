@@ -17,8 +17,7 @@ class Create extends Component
             'nome'=>['required','min:5'],
             'cnpj'=>['required','unique:instituicoes,cnpj', new CnpjValidation()],
             'site'=>['min:5','max:43'],
-            'email'=>['required'],
-            'senha'=>['required','min:8']
+            'email'=>['required'],            
         ];
     }
     public function render()
@@ -29,14 +28,19 @@ class Create extends Component
     {
         
         $this->validate();
+        
         try{
+            $password =str_replace('-','',str_replace('/','',str_replace('.','',$this->cnpj)));
             $user = new CreateNewUser();
-            $user->create([
+            $newUser =$user->create([
                 'name'=>$this->nome,
                 'email'=>$this->email,
-                'password'=>$this->senha,
-                'confirm_password'=>$this->senha
+                'perfil'=>3,
+                'change_password'=>true,
+                'password'=>$password,
+                'confirm_password'=>$password
             ]);
+            
             $endereco = [
                 'rua'=>$this->rua,
                 'bairro'=>$this->bairro,
@@ -45,7 +49,7 @@ class Create extends Component
                 'cep'=>$this->cep,
                 'numero'=>$this->numero
             ];
-            Instituicao::create([
+            $newInstituicao = Instituicao::create([
                 'cnpj'=>$this->cnpj,
                 'nome_fantasia'=>$this->nome,
                 'site'=>$this->site,
@@ -55,10 +59,11 @@ class Create extends Component
                 'logo'=>$this->logo
                 
             ]);
+            $newUser->instituicoes()->attach($newInstituicao->id);
             
             $this->emit('toast','Instituição cadastrada com sucesso!','success');
             $this->reset();
-        }catch(\Exception $e){
+        }catch(\Exception $e){            
             $this->emit('toast',$e->getMessage(),'error');
         }
     }

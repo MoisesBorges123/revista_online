@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Tables;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Artigo;
-
+use App\Models\Revista;
 class ArticleTables extends DataTableComponent
 {
     protected $model = Artigo::class;
@@ -20,6 +21,32 @@ class ArticleTables extends DataTableComponent
             $this->emit('changePage','show',$id[0]);
         }else{
             $this->emit('toast','Para executar esta ação você não pode selecionar mais de um registro.','warning');
+        }
+    }
+    public function builder(): Builder
+    {
+        
+        if(auth()->user()->perfi_id == 3){    
+            $instituicoes = [];
+            foreach(auth()->user()->instituicoes as $instituicao)
+            {
+                array_push($instituicoes,$instituicao->id);
+            }
+            $revistaAcss=[];
+           $revistas =  Revista::query()        
+                ->whereIn('instituicoe_id',$instituicoes)->get();
+            if(!empty($revistas)){
+                foreach($revistas as $revista){
+                    array_push($revistaAcss,$revista->id);
+                }
+
+            }
+            //dd($revistas);
+            return Artigo::query()
+                ->whereIn('revista_id',$revistaAcss);
+        }
+        else{
+            return Artigo::query();
         }
     }
     public function editSelected()

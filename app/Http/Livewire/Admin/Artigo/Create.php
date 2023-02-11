@@ -38,9 +38,9 @@ class Create extends Component
     }
     public function store()
     {
+        $this->validate();
         try
         {
-            $this->validate();
             $artigo = Artigo::create([
                 'titulo'=>$this->titulo,
                 'revista_id'=>$this->revista_id,                
@@ -56,15 +56,9 @@ class Create extends Component
                 'resumo_ingles'=>$this->resumo_ingles,
                 'inicio_publicacao'=>$this->inicio_publicacao
             ]);
-
-            $autor = Autores::create([
-                'name'=>$this->autor_correspondente,
-                'autor_correspondete'=>true,
-                'email'=>$this->email_autor_correspondente,                
-            ]);
-            $autor->articles()->attach($artigo->id);
             $this->emit('toast','Artigo cadastrado com sucesso!','success');
-            $this->emit('changePage','index');
+            $this->emit('changePage','cadAutores',$artigo->id);
+            $this->emit('top');
         }catch(\Exception $e)
         {
             $this->emit('toast',$e->getMessage(),'error');

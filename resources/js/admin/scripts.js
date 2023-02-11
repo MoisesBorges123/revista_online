@@ -16,7 +16,13 @@ const Toast = Swal.mixin({
     }
   });
 document.addEventListener('livewire:load', () => {
-    Livewire.on('swal', function (message,type,id=null) {
+    Livewire.on('swal', function (message,type,id=null,acTrigger=false) {
+        /**
+         * message = Mensagem a ser exibieda para o usuário
+         * type = Tipo do message
+         * id = Se form um aviso de excusão esse é o ID a ser excuido
+         * acTrigger = Caso a mensagem a ser exibida precise chamar um função no livewire especifica execute
+         */
         console.log(message);
         console.log(type);
         console.log(id);
@@ -27,7 +33,15 @@ document.addEventListener('livewire:load', () => {
         }).then(function (result) {
             if (result.isConfirmed) {
                 if(type=='delete')
-                    livewire.emit('delete',id)
+                    if(acTrigger){
+                        console.log('Entrou: '+acTrigger);
+                        livewire.emit(acTrigger,id);
+                    }
+                    else{
+                        console.log('NÃO Entrou: '+acTrigger);
+                        livewire.emit('delete',id);
+
+                    }
                 else if(type=='question')
                     livewire.emit('confirm')
             }
@@ -39,6 +53,7 @@ document.addEventListener('livewire:load', () => {
             title: message,
           })      
     });
+   
 
   
 

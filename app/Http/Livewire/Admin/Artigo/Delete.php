@@ -21,6 +21,7 @@ class Delete extends Component
             if(count($ids) ==1)
             {
                 $artigo = Artigo::find($ids[0]);
+                $artigo->autores->detach();
                 $artigo->delete();
                 $this->emit('toast','Artigo excluido com sucesso!','success');
                 
@@ -31,6 +32,7 @@ class Delete extends Component
                 {
                     
                     $artigo = artigo::find($id);
+                    $artigo->autores->detach();
                     if($artigo->delete()){
                         $i++;
                     }

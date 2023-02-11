@@ -1,6 +1,7 @@
-
+    
     <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
       <x-slot name='title'>Home</x-slot> 
+      
       @if(!empty($revistas))
       
       <div class="carousel-inner">

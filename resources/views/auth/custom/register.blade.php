@@ -31,6 +31,19 @@
                                     <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
                                 </div>
                             </div>
+                            <div class="form">
+                                <div class="form-group">
+                                    <x-jet-label class='form-label' for="Perfil" value="{{ __('Perfil') }}" />
+                                    <select name="perfil" id="perfil" class="form-control">
+                                        <option value=""> - Selecione - </option>
+                                        @forelse($perfis as $perfil)
+                                        <option value="{{$perfil->id}}">{{$perfil->nome}}</option>
+                                        @empty
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="form">                                
                                 <div class="form-group">
                                     <x-jet-label  class='form-label' for="password" value="{{ __('Password') }}" />

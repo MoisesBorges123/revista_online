@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Admin\Instituicao;
 use App\Models\Instituicao;
+use App\Models\User;
 use Livewire\Component;
-
+use App\Actions\Jetstream\DeleteUser;
 class Delete extends Component
 {
     public $listeners =[
@@ -20,7 +21,16 @@ class Delete extends Component
             if(count($ids) ==1)
             {
                 $instituicao = Instituicao::find($ids[0]);
+                $user = User::where('email',$instituicao->email)->first();
+                
+                if(!empty($user))
+                {
+                    $actionDeleteUser = new DeleteUser($user);
+                    $actionDeleteUser->delete($user);
+                                      
+                }
                 $instituicao->delete();
+              
                 $this->emit('toast','Institução excluida com sucesso!','success');
                 
             }else 
@@ -30,7 +40,15 @@ class Delete extends Component
                 {
                     
                     $instituicao = Instituicao::find($id);
-                    if($instituicao->delete()){
+                    $user = User::where('email',$instituicao->email)->first();
+                 
+                    if(!empty($user))
+                    {
+                        $actionDeleteUser = new DeleteUser($user);
+                        $actionDeleteUser->delete($user);
+                       
+                    }
+                    if($instituicao->delete() ){
                         $i++;
                     }
                 }

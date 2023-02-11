@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire\Tables;
 
+use App\Models\Instituicao;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables;
 use App\Models\Revista;
+use Illuminate\Database\Eloquent\Builder;
 
 class MagazineTable extends DataTableComponent
 {
@@ -18,6 +21,24 @@ class MagazineTable extends DataTableComponent
         $this->setSearchStatus(true);
         $this->setColumnSelectStatus(false);
     }
+    public function builder(): Builder
+    {
+        
+        if(auth()->user()->perfi_id == 3){    
+            $instituicoes = [];
+            foreach(auth()->user()->instituicoes as $instituicao)
+            {
+                array_push($instituicoes,$instituicao->id);
+            }
+           
+            return Revista::query()        
+                ->whereIn('instituicoe_id',$instituicoes);
+        }
+        else{
+            return Revista::query();
+        }
+    }
+    
     public function bulkActions(): array
     {
         return [

@@ -15,7 +15,7 @@ class CreateArtigosAutores extends Migration
     {
         Schema::create('artigos__autores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('artigo_id');
+            $table->foreignId('artigo_id')->onDelete('cascade');
             $table->foreignId('autor_id');
             $table->timestamps();
         });

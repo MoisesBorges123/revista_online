@@ -16,6 +16,7 @@ class Instituicao extends Component
     ];
     public function mount()
     {
+        
         $this->setWindow('index');
     }
     public function render()

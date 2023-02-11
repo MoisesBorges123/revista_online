@@ -11,7 +11,7 @@
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li><a class="nav-link scrollto" data-link="#home" href="{{route('home')}}"><span>Home</span></a></li>          
+          <li><a class="nav-link scrollto" data-link="#home" href="{{route('home')}}"><span>Início</span></a></li>          
           <li><a class="nav-link scrollto" data-link="#instituicoes" href="{{route('instituicoes')}}">Instituições</a></li>
           <li><a class="nav-link scrollto" data-link="#artigos" href="{{route('artigos')}}">Artigos</a></li>
           <li><a class="nav-link scrollto" data-link="#revistas" href="{{route('revistas')}}">Revistas</a></li>
