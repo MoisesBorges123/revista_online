@@ -23,6 +23,8 @@ class PerfilCheck
         '/artigo-e-revistas'=>[1,2,3,4],
         '/areas-do-conhecimento'=>[1,2],
         '/usuario'=>[1],
+        '/meu-usuario'=>[1,2,3],
+        '/register' =>[1,2]
     ];
     public function handle(Request $request, Closure $next)
     {

@@ -19,9 +19,16 @@ class Delete extends Component
     {
         
         try{
-            if(count($ids) ==1)
+            if(!is_array($ids) || count($ids) ==1)
             {
-                $revista = Revista::find($ids[0]);                
+                if(is_array($ids))
+                {
+                    $revista = Revista::find($ids[0]);
+                }else
+                {
+                    $revista = Revista::find($ids);
+                }
+                                
                 $this->emit('toast','Revista excluida com sucesso!','success');
                 if(File::exists(public_path($revista->capa))){                    
                     File::delete(public_path($revista->capa));        

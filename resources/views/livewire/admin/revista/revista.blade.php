@@ -4,8 +4,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Painel</a></li>
-            <li class="breadcrumb-item">Revista</li>
-            
+            <li class="breadcrumb-item">Revista</li>            
           </ol>
         </nav>
       </div>
@@ -22,7 +21,7 @@
                   <span class="bi bi-list"></span> Cadastrados
               </button>
           </div>
-          @elseif($window == 'edit')
+          @elseif($window == 'edit' || $window == 'show')
           <div class="col-2 mb-5">
             <button class="btn btn-danger" wire:click="setWindow('index')">
                 <span class="bi bi-arrow-90deg-left"></span> Voltar
@@ -35,7 +34,7 @@
         <livewire:admin.revista.index></livewire:admin.revista.index>
         
     @elseif($window == 'show')
-        <livewire:admin.revista.show></livewire:admin.revista.show>  
+        <livewire:admin.revista.show id="{{$selectedID}}"></livewire:admin.revista.show>  
     @elseif($window == 'create')
         <livewire:admin.revista.create></livewire:admin.revista.create>
     @elseif($window == 'edit')

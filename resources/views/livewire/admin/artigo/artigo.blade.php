@@ -21,7 +21,7 @@
                   <span class="bi bi-list"></span> Cadastrados
               </button>
           </div>
-          @elseif($window == 'edit')
+          @elseif($window == 'edit' || $window == 'show')
           <div class="col-2 mb-5">
             <button class="btn btn-danger" wire:click="setWindow('index')">
                 <span class="bi bi-arrow-90deg-left"></span> Voltar
@@ -34,7 +34,7 @@
         <livewire:admin.artigo.index></livewire:admin.artigo.index>
         
     @elseif($window == 'show')
-        <livewire:admin.artigo.show></livewire:admin.artigo.show>  
+        <livewire:admin.artigo.show id="{{$selectedID}}"></livewire:admin.artigo.show>  
     @elseif($window == 'create')
         <livewire:admin.artigo.create></livewire:admin.artigo.create>
     @elseif($window == 'edit')

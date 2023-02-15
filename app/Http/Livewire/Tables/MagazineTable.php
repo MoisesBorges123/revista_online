@@ -42,9 +42,9 @@ class MagazineTable extends DataTableComponent
     public function bulkActions(): array
     {
         return [
-            'exportSelected' => 'Exportar',
-            'deleteSelected' => 'Apagar',
+            
             'editSelected' => 'Alterar',
+            'deleteSelected' => 'Apagar',
             'showSelected' => 'Detalhes',
         ];
     }

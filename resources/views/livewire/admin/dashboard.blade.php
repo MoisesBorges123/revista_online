@@ -21,7 +21,7 @@
                     </ul>
                   </div>
               <div class="card-body">
-                <h5 class="card-title">Revistas <span>| Ultimos 06 meses</span></h5>
+                <h5 class="card-title">Revistas <span>| {{$headerCard1}}</span></h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -29,7 +29,7 @@
                   </div>
                   <div class="ps-3">
                     <h6>{{str_pad($numPublicRevista,3,'0',STR_PAD_LEFT)}}</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <span class="text-success small pt-1 fw-bold d-none">12%</span> <span class="d-none text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
@@ -56,7 +56,7 @@
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Artigos  <span>| Ultimos 06 meses</span></h5>
+                <h5 class="card-title">Artigos  <span>| {{$headerCard2}}</span></h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -64,7 +64,7 @@
                   </div>
                   <div class="ps-3">
                     <h6>{{str_pad($numPublicArtigo,3,'0',STR_PAD_LEFT)}}</h6>
-                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <span class="text-success small pt-1 fw-bold d-none">8%</span> <span class="d-none text-muted small pt-2 ps-1">increase</span>
 
                   </div>
                 </div>
@@ -85,22 +85,22 @@
                         <h6>Filtro</h6>
                     </li>
 
-                    <li><button class="dropdown-item" wire:click="countArtigo('mes')" >Mês</button></li>
-                    <li><button class="dropdown-item" wire:click="countArtigo('trimestre')">Trimestre</button></li>
-                    <li><button class="dropdown-item" wire:click="countArtigo('semestre')" >Semestre</button></li>
+                    <li><button class="dropdown-item" wire:click="countAutores('mes')" >Mês</button></li>
+                    <li><button class="dropdown-item" wire:click="countAutores('trimestre')">Trimestre</button></li>
+                    <li><button class="dropdown-item" wire:click="countAutores('semestre')" >Semestre</button></li>
                 </ul>
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Autores <span>| Semestre</span></h5>
+                <h5 class="card-title">Autores <span>| {{$headerCard3}}</span></h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-people"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>1244</h6>
-                    <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                    <h6>{{$numPublicAutores}}</h6>
+                    <span class="text-danger small pt-1 fw-bold d-none">12%</span> <span class="text-muted small pt-2 ps-1 d-none">decrease</span>
 
                   </div>
                 </div>

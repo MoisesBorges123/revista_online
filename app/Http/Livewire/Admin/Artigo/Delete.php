@@ -18,10 +18,16 @@ class Delete extends Component
     {
         
         try{
-            if(count($ids) ==1)
+            if(!is_array($ids) || count($ids) ==1)
             {
-                $artigo = Artigo::find($ids[0]);
-                $artigo->autores->detach();
+                if(is_array($ids))
+                {
+                    $artigo = Artigo::find($ids[0]);
+                }else
+                {
+                    $artigo = Artigo::find($ids);
+                }                
+                $artigo->autores()->detach();
                 $artigo->delete();
                 $this->emit('toast','Artigo excluido com sucesso!','success');
                 
@@ -31,8 +37,8 @@ class Delete extends Component
                 foreach($ids as $id)
                 {
                     
-                    $artigo = artigo::find($id);
-                    $artigo->autores->detach();
+                    $artigo = artigo::find($id);                    
+                    $artigo->autores()->detach();
                     if($artigo->delete()){
                         $i++;
                     }

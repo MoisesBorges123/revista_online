@@ -75,8 +75,7 @@ class ArticleTables extends DataTableComponent
     {
         return [
             'editSelected' =>   'Alterar',
-            'deleteSelected' => 'Apagar',
-            'exportSelected' => 'Exportar',
+            'deleteSelected' => 'Apagar',            
             'showSelected' =>   'Detalhes',
             
         ];
@@ -87,23 +86,20 @@ class ArticleTables extends DataTableComponent
             Column::make("Id", "id")
                 ->sortable(),
             Column::make("Título", "titulo")
-                ->sortable(),
-            Column::make("Revista", "revista_id")
-                ->sortable(),
+                ->sortable()->searchable(),
+            Column::make("Revista", "revista.titulo")
+                ->sortable()->searchable(),            
             Column::make("Ano", "ano")
-                ->sortable(),
+                ->sortable()->searchable(),
             Column::make("Volume", "volume")
                 ->sortable(),
             Column::make("DOI", "doi")
-                ->sortable(),            
+                ->sortable()->searchable(),            
             Column::make("Link", "link_externo")
                 ->sortable(),            
             Column::make("Numero", "numero")
-                ->sortable(),           
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
+                ->sortable()->searchable(),           
+        
         ];
     }
 }

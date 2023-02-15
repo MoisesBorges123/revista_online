@@ -45,7 +45,7 @@
                         <div class="card-footer" style='background-color:#fff; border-top:none'>
                             <div class="d-flex">
                                 <button type='submit' class="btn-get-started">Entrar</button>
-                                <a href="{{route('login')}}" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Primeiro acesso</span></a>
+                                <a href="{{route('login')}}" class="d-none glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Primeiro acesso</span></a>
                             </div>
                         </div>
                     </form>

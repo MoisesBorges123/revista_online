@@ -13,7 +13,7 @@
       @if(in_array(auth()->user()->perfi_id,[1,2]))
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('instituicao')}}">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-hospital"></i>
           <span>Instituições</span>
         </a>
       </li><!-- End Profile Page Nav -->
@@ -21,7 +21,7 @@
       @if(in_array(auth()->user()->perfi_id,[1,2,3]))
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('revista')}}">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-book-half"></i>
           <span>Revistas</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
@@ -29,7 +29,7 @@
       @if(in_array(auth()->user()->perfi_id,[1,2,3,4]))
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('artigo')}}">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-file-earmark-text"></i>
           <span>Artigos</span>
         </a>
       </li>

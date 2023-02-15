@@ -23,9 +23,9 @@ document.addEventListener('livewire:load', () => {
          * id = Se form um aviso de excusão esse é o ID a ser excuido
          * acTrigger = Caso a mensagem a ser exibida precise chamar um função no livewire especifica execute
          */
-        console.log(message);
-        console.log(type);
-        console.log(id);
+        //console.log(message);
+        //console.log(type);
+        //console.log(id);
         Swal.fire({
             icon: type == 'delete' ? 'question' : type,
             text: message,
@@ -34,11 +34,11 @@ document.addEventListener('livewire:load', () => {
             if (result.isConfirmed) {
                 if(type=='delete')
                     if(acTrigger){
-                        console.log('Entrou: '+acTrigger);
+                        //console.log('Entrou: '+acTrigger);
                         livewire.emit(acTrigger,id);
                     }
                     else{
-                        console.log('NÃO Entrou: '+acTrigger);
+                        //console.log('NÃO Entrou: '+acTrigger);
                         livewire.emit('delete',id);
 
                     }

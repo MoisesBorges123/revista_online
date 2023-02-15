@@ -30,10 +30,9 @@ class InstituicaoTable extends DataTableComponent
     public function bulkActions(): array
     {
         return [
-            'exportSelected' => 'Exportar',
-            'deleteSelected' => 'Apagar',
+            
             'editSelected' => 'Alterar',
-            'showSelected' => 'Detalhes',
+            'deleteSelected' => 'Apagar',            
         ];
     }
     public function showSelected(){

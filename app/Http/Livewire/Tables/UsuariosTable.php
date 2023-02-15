@@ -19,15 +19,14 @@ class UsuariosTable extends DataTableComponent
     {
         return [
             Column::make("Id", "id")
-                ->sortable(),
+                ->sortable(),                
             Column::make("Name", "name")
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Column::make("Email", "email")
                 ->sortable(),
             Column::make("Perfil", "perfil.nome")
-                ->sortable(),
-            Column::make("Change password", "change_password")
-                ->sortable(),
+                ->sortable(),            
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make("Updated at", "updated_at")

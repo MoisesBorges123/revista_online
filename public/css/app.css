@@ -1390,9 +1390,6 @@ select {
 .-mb-0 {
   margin-bottom: -0px;
 }
-.ml-5 {
-  margin-left: 1.25rem;
-}
 .block {
   display: block;
 }
@@ -2147,9 +2144,6 @@ select {
 }
 .pr-1 {
   padding-right: 0.25rem;
-}
-.pb-0 {
-  padding-bottom: 0px;
 }
 .text-left {
   text-align: left;

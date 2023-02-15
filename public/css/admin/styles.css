@@ -1,3 +1,4 @@
+
 .btn-large-1{
     width: 6rem;
 }
@@ -5,4 +6,11 @@
     height:15rem; 
     width:9rem;
     border-radius:2rem;
+}
+.flag{
+    width:1.8rem !important;
+    cursor: pointer !important;
+}
+.text-justify{
+    text-align: justify !important;
 }

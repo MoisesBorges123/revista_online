@@ -51,7 +51,7 @@ class ProcessAlertPublication implements ShouldQueue
                     switch ($revista->periodicidade)
                     {
                         case 'Diário':
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',time()))->get());                            
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -70,7 +70,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Semanal": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at','>=',date('Y-m-d',strtotime('-7 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get() );
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao','>=',date('Y-m-d',strtotime('-7 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get() );
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -89,7 +89,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Mensal": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',strtotime('-30 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',strtotime('-30 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get());
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -108,7 +108,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Quinzenal": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',strtotime('-15 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',strtotime('-15 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get());
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -127,7 +127,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Trienal": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',strtotime('-90 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',strtotime('-90 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get());
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -146,7 +146,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Semestral": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',strtotime('-180 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',strtotime('-180 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get());
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -165,7 +165,7 @@ class ProcessAlertPublication implements ShouldQueue
                             }
                             break;
                         case "Anual": 
-                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('created_at',date('Y-m-d',strtotime('-365 days',time())))->where('created_at','<=',date('Y-m-d',time()))->get());
+                            $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',strtotime('-365 days',time())))->where('inicio_publicacao','<=',date('Y-m-d',time()))->get());
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([

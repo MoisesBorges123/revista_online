@@ -8,6 +8,7 @@ use App\Http\Livewire\{
     Admin\Revista\Revista,
     Admin\Artigo\Artigo,
     Admin\Usuario\Usuario,
+    Admin\Usuario\Profile\Profile,
     Admin\Configuracoes\AreaEstudo\AreaEstudo,   
     Blog\Revistas\Index as RevistaBlog,
     Blog\Artigos\Artigo AS ArtigoBlog,
@@ -48,4 +49,8 @@ Route::middleware([
     Route::get('/artigo-e-revistas', Artigo::class)->name('artigo');
     Route::get('/areas-do-conhecimento', AreaEstudo::class)->name('areaestudo');    
     Route::get('/usuario', Usuario::class)->name('usuario');
+    Route::get('/meu-usario', Profile::class)->name('usuario.profile');
 });
+
+require_once __DIR__ .'/fortify.php';
+require_once __DIR__ .'/jetstream.php';

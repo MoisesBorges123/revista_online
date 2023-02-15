@@ -29,7 +29,20 @@ class Create extends Component
                     ];
     public function mount()
     {
-        $this->revista=Revista::get();
+        if(auth()->user()->perfi_id ==3)
+        {
+            $instituicoes=[];
+        foreach(auth()->user()->instituicoes as $instituicao)
+        {
+            array_push($instituicoes,$instituicao->id);
+        }
+            $this->revista=Revista::whereIn('instituicoe_id',$instituicoes)->get();
+        }else
+        {
+            $this->revista=Revista::get();
+        }
+        
+        
         
     }
     public function render()
