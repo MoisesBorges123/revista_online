@@ -19,14 +19,19 @@ class Index extends Component
         $this->filterSelectedLabel['areaconhecimento']=[];
         $this->filterSelectedLabel['instituicao']=[];
         $this->filter=false;
+        
+       
         if(!empty($id))
         {
-            $this->instituicao = Instituicao::find($id);
+            $instituicao = Instituicao::find($id);
+            array_push($this->filterSelected['instituicao'],$instituicao->id);
+            array_push($this->filterSelectedLabel['instituicao'],$instituicao->nome_fantasia);                    
         }
-        
-       $this->getLast();
-       $this->getAreasDoConhecimento();
+        $this->getLast();
+        $this->getAreasDoConhecimento();
        $this->getInstituicoes();
+        $this->filter();
+       
         
     }
     public function render()
@@ -95,8 +100,10 @@ class Index extends Component
     }
     private function filterInstituicao()
     {
+        //dd($this->filterSelected['instituicao']);
         foreach( $this->filterSelected['instituicao'] as $id)
         {
+
             $this->revistas = $this->revistas->where('instituicoe_id',$id);
         }
     }

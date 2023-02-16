@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-12">
               <label for="palavra_chave" class="form-label">Palavras Chaves</label>
-              <textarea wire:model='palavra_chave' name="palavra_chave" id="palavra_chave" cols="10" rows="10" class="form-control @error('link_externo') is-invalid @enderror" placeholder="Ex: palavra_1, palavra_2, palavra_3..."></textarea>              
+              <textarea wire:model='palavra_chave' name="palavra_chave" id="palavra_chave" cols="10" rows="10" class="form-control @error('link_externo') is-invalid @enderror" placeholder="Ex: palavra1; palavra2; palavra3;..."></textarea>              
               @error('palavra_chave') <span class="text-danger error">{{ $message }}</span> @enderror
             </div>
             <div class="col-md-12">

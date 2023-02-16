@@ -7,18 +7,8 @@
         <input type="text" wire:model.debounce.500ms="search" placeholder="Pesquisar revista..." class="form-control input-search" type='search'>
         <!--<button wire:click="search" class="btn-none btn-watch-video d-flex align-items-center"><i class="bi bi-search"></i><span>Pesquisar</span></button>-->
         <!--<button  class="btn-none glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-search"></i><span>Pesquisar</span></button>-->
-      </div> 
-      @if(!empty($instituicao->id))
-      <div class="d-flex mb-5" style='width:60%'>
-        <div class='badge badge-secondary'>
-          <span>{{$instituicao->nome_fantasia}}</span>
-          <span>
-            <i class="bi bi-x text-danger" wire:click="unsetFilter({{$item}},reaconheciment)" ></i>
-          </span>
-
-        </div>
-      </div>
-      @endif   
+      </div>       
+        
       @if(!empty($filterSelectedLabel['areaconhecimento']))
       <div class="d-flex" style='width:60%'>
         @foreach($filterSelectedLabel['areaconhecimento'] as $item)

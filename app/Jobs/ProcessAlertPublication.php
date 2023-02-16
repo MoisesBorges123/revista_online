@@ -24,7 +24,7 @@ class ProcessAlertPublication implements ShouldQueue
      */
     public function __construct()
     {
-        //
+        date_default_timezone_set("America/Sao_Paulo");
     }
     
     /**
@@ -50,8 +50,9 @@ class ProcessAlertPublication implements ShouldQueue
                 {
                     switch ($revista->periodicidade)
                     {
-                        case 'Diário':
+                        case 'Diário':                            
                             $artigo = count(Artigo::where('revista_id',$revista->id)->where('inicio_publicacao',date('Y-m-d',time()))->get());                            
+                            
                             if($artigo == 0){
                                 if(empty(count(Alert::where('codigo','post'.$revista->id)->get()))){
                                     Alert::create([
@@ -64,6 +65,7 @@ class ProcessAlertPublication implements ShouldQueue
                                 }
                             }else{
                                 $alert = Alert::where('codigo','post'.$revista->id)->first();
+                               
                                 if(!empty($alert)){
                                     $alert->delete();
                                 }

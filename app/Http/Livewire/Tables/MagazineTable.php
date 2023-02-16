@@ -83,15 +83,15 @@ class MagazineTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable()->searchable(),
-            Column::make("Instituicao id", "instituicao.nome_fantasia")
+            Column::make("Instituição", "instituicao.nome_fantasia")
                 ->sortable(),
-            Column::make("Titulo", "titulo")
+            Column::make("Título", "titulo")
                 ->sortable()->searchable(),
             Column::make("Subtitulo", "subtitulo")
                 ->sortable()->searchable(),
             Column::make("ISSN", "issn")
                 ->sortable()->searchable(),
-            Column::make("Inicio publicacao", "inicio_publicacao")
+            Column::make("Publicado em", "inicio_publicacao")
                 ->sortable()
                 ->format(
                     fn($value,$row, Column $column)=> date('d/m/Y',strtotime($value))

@@ -45,7 +45,7 @@
         <div class="row justify-content-center mt-4">
             <div class="col-md-4">
                 @if(!empty($publicacoes))          
-                    <a class='btn btn-getstart' href="{{route('revistas',['id'=>$cod])}}">Visualizar</a>
+                    <a class='btn btn-getstart' href="{{route('revistas',['id'=>$cod])}}">Revistas</a>
                 @endif
                     
             </div>
